@@ -1,36 +1,90 @@
-from py_mini_racer import py_mini_racer
 from making_js import nexa_to_js
+from making_node import node_main
+from modify_node import remove_range_from_nodes
 
 
 
-# 넥사크로 코드 (예제)
+# 넥사크로 코드 (예시 input)
 nexacro_code = """
-function cmb_cntrKindCd_onitemchanged(obj:Combo, e:ItemChangeEventInfo)
+function fn_callBack(svcid, strErrCode, strErrMsg) 
 {
-    //제휴사정보 
-    if (gf_trim(obj.value) == "") {
-        ds_codeAfcrNo.filter("AFCR_NM == '전체'");        
-    } else if (gf_trim(obj.value) == "01") {
-        ds_codeAfcrNo.filter("AFCR_NM == '전체' || AFCR_CLSF_CD == '10'");        
-    } else {
-        ds_codeAfcrNo.filter("AFCR_NM == '전체' || AFCR_CLSF_CD == '20'");
-    }
-    cmb_afcrNo.index = 0;
+	//alert(" strErrCode : " + strErrCode);
+	var sErrorcd  = "";
+	var sErrormsg = "";
+
+	gf_showWaitImage(false);
+	
+	//세션체크
+	if (strErrCode == -1000) {
+		gf_sessionOut();
+		return;
+	}
+	
+	if (strErrCode != 0) {
+		//alert("Error : " + strErrMsg);
+		gf_alertMessage( "CME0002", [strErrMsg] );	
+		return;
+	} else {
+		if(svcid == "COMBO_SET") {
+			gf_insertDefaultRowForCombo(ds_codeCntrKindCd, "선택", "", 0, "CD_NM", "DTL_CD");	//계약종류
+			ds_codeCntrKindCd.filter("DTL_CD==''||DTL_CD=='01'||DTL_CD=='02'");
+			cmb_cntrKindCd.index = 0;
+
+			gf_insertDefaultRowForCombo(ds_codeCntrStCd, "선택", "", 0, "CD_NM", "DTL_CD");		//계약상태
+			
+		//제휴사정보 구분코드 조회
+		} else if (svcid == "CTGaAfcrMng_sel") {
+			gf_insertDefaultRowForCombo(ds_codeAfcrNo, "전체", "", 0, "AFCR_NM", "AFCR_CLSF_CD");
+			ds_codeAfcrNo.filter("AFCR_NM == '전체'");
+			
+			cmb_afcrNo.index = 0;
+			return;
+		} else if (svcid == "CTCntrStHis_sel01") {
+			if (ds_cntrList.rowcount < 1 ) {
+				gf_messageCtl("CMI0007");
+			} else {
+				gf_messageCtl("CMI0009");
+			}
+			return;
+		} else if (svcid == "CTCntrStHis_sel02") {
+			if (ds_cntrStList.rowcount < 1 ) {
+				gf_messageCtl("CMI0007");
+			} else {
+				gf_messageCtl("CMI0009");
+			}
+			return;
+		} else if (svcid == "CTCntrStHis_exe") {
+			if (ds_cntrStList.rowcount < 1 ) {
+				gf_messageCtl("CMS0006");
+			} else {
+				gf_messageCtl("CMI0002");
+			}
+			return;			
+		
+		//엑셀다운로드
+		} else if (svcid == "ExlDownloadSC_sel") {
+			gf_showWaitImage(true);
+			gf_exportExcel(grd_cntrStList, CMNavi.stc_Navi.text + "_" + gf_today() + ".xls", this.titletext);
+			gf_showWaitImage(false);
+		}
+	}
 }
 """
+#넥사크로 코드를 ast로 변환합니다.
 ast = nexa_to_js(nexacro_code)
 
+#ast를 노드의 형태로 반환합니다.
+nodes = node_main(ast)
 
-print(ast)
-
-#print(ast)
-#print(type(ast))
-# JSON 형식으로 변환
-#nodes_json = [node.to_dict() for node in nodes]
-#print(json.dumps(nodes_json, indent=2, ensure_ascii=False))
+#노드 필요없는거 짜를거임, 현재는 range만
+modified_nodes = remove_range_from_nodes(nodes)
 
 
+#############테스트
+node_test = modified_nodes[3] if modified_nodes else None
 
+print(node_test)
 
+#테스트 타입 추출용
+#test1 =  [node_test.get('type') for node_test in node_test]
 
-##print(dd)
