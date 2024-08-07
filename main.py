@@ -1,4 +1,4 @@
-from making_js import nexa_to_js
+from making_ast import nexa_to_js
 from making_node import node_main
 from modify_node import remove_range_from_nodes
 

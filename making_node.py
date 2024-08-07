@@ -1,5 +1,4 @@
 import uuid
-import json
 from typing import Dict, List, Any
 
 def create_node(node_type: str, body: Any) -> Dict[str, Any]:

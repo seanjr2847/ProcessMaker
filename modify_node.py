@@ -8,3 +8,11 @@ def remove_range_from_nodes(nodes: List[Dict[str, Any]]) -> List[Dict[str, Any]]
         if 'range' in node:
             del node['range']
     return nodes
+
+
+def modify_main(nodes: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """
+    ast 형태를 가다듬습니다.
+    """
+    modified_nodes = remove_range_from_nodes(nodes)
+    return modified_nodes
