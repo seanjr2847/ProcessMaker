@@ -18,11 +18,11 @@ xfdl은 스크립트니까 제외.
 
 # FunctionDeclaration
 
-##설명
+## 설명
 함수 선언
 
 
-##예시
+## 예시
 interface FunctionDeclaration {
     type: 'FunctionDeclaration';
     id: Identifier | null;
@@ -38,7 +38,7 @@ type FunctionParameter = AssignmentPattern | Identifier | BindingPattern;
 
 
 # BlockStatement
-##기본 포맷
+## 기본 포맷
 여러가지 블럭들이 올 수 있음 ㅇㅇ
 아래 블럭들 올 수 있음
 
@@ -54,12 +54,13 @@ A declaration can be one of the following:
 type Declaration = ClassDeclaration | FunctionDeclaration |  VariableDeclaration;
 A statement list item is either a statement or a declaration:
 
-##설명
+## 설명
 interface BlockStatement: BlockStatement라는 이름의 인터페이스를 정의합니다.
 type: 'BlockStatement': 이 인터페이스의 타입이 'BlockStatement'로 설정되어 있습니다.
 body: StatementListItem[]: BlockStatement의 body 속성은 StatementListItem 타입의 배열로, 여러 개의 문장 요소를 포함할 수 있습니다.
 
-#VariableDeclaration
+# VariableDeclaration
+### 이거
 변수 선언함
 Variable Declaration
 interface VariableDeclaration {
@@ -75,7 +76,7 @@ interface VariableDeclarator {
     init: Expression | null;
 }
 
-- ExpressionStatement
+## ExpressionStatement
 실행문임
 Expression Statement
 interface ExpressionStatement {
@@ -85,5 +86,5 @@ interface ExpressionStatement {
 }
 When the expression statement represents a directive (such as "use strict"), then the directive property will contain the directive string.
 
-- IfStatement
+## IfStatement
 

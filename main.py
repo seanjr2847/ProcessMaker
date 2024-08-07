@@ -1,6 +1,6 @@
 from making_ast import nexa_to_js
 from making_node import node_main
-from modify_node import remove_range_from_nodes
+from modify_node import modify_main
 
 
 
@@ -70,20 +70,22 @@ function fn_callBack(svcid, strErrCode, strErrMsg)
 	}
 }
 """
+
+
+
+
 #넥사크로 코드를 ast로 변환합니다.
 ast = nexa_to_js(nexacro_code)
 
 #ast를 노드의 형태로 반환합니다.
 nodes = node_main(ast)
 
-#노드 필요없는거 짜를거임, 현재는 range만
-modified_nodes = remove_range_from_nodes(nodes)
+#노드 간략화 시킴
+modified_nodes = modify_main(nodes)
+#
 
+#print(modified_nodes)
 
-#############테스트
-node_test = modified_nodes[3] if modified_nodes else None
-
-print(node_test)
 
 #테스트 타입 추출용
 #test1 =  [node_test.get('type') for node_test in node_test]
