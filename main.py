@@ -3,7 +3,6 @@ from making_node import node_main
 from modify_node import modify_main
 
 
-
 # 넥사크로 코드 (예시 input)
 nexacro_code = """
 function fn_callBack(svcid, strErrCode, strErrMsg) 
@@ -21,7 +20,11 @@ function fn_callBack(svcid, strErrCode, strErrMsg)
 	}
 	
 	if (strErrCode != 0) {
-		//alert("Error : " + strErrMsg);
+		if(svcid != "COMBO_SET") {
+			gf_insertDefaultRowForCombo(ds_codeCntrKindCd, "선택", "", 0, "CD_NM", "DTL_CD");	//계약종류
+			ds_codeCntrKindCd.filter("DTL_CD==''||DTL_CD=='01'||DTL_CD=='02'");
+			cmb_cntrKindCd.index = 0;}
+        //alert("Error : " + strErrMsg);
 		gf_alertMessage( "CME0002", [strErrMsg] );	
 		return;
 	} else {
@@ -71,9 +74,6 @@ function fn_callBack(svcid, strErrCode, strErrMsg)
 }
 """
 
-
-
-
 #넥사크로 코드를 ast로 변환합니다.
 ast = nexa_to_js(nexacro_code)
 
@@ -82,11 +82,9 @@ nodes = node_main(ast)
 
 #노드 간략화 시킴
 modified_nodes = modify_main(nodes)
-#
 
-#print(modified_nodes)
+print(modified_nodes)
 
 
 #테스트 타입 추출용
 #test1 =  [node_test.get('type') for node_test in node_test]
-
