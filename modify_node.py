@@ -171,8 +171,7 @@ def simplify_nodes(nodes: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     
     #FunctionDeclaration 아이디 부여용
     function_id = ""
-    # if statement 재귀함수 부여용
-    if_nodes = []
+
     for node in nodes:
         del node['range']
         a = node.get('type')

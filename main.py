@@ -1,6 +1,7 @@
 from making_ast import nexa_to_js
 from making_node import node_main
 from modify_node import modify_main
+from make_diagram import assign_coordinates
 
 
 # 넥사크로 코드 (예시 input)
@@ -77,14 +78,18 @@ function fn_callBack(svcid, strErrCode, strErrMsg)
 #넥사크로 코드를 ast로 변환합니다.
 ast = nexa_to_js(nexacro_code)
 
+#번역 로직 만들어야함
+
+
 #ast를 노드의 형태로 반환합니다.
 nodes = node_main(ast)
 
 #노드 간략화 시킴
 modified_nodes = modify_main(nodes)
 
-print(modified_nodes)
+node_coordinates = assign_coordinates(modified_nodes)
 
+print(node_coordinates)
 
 #테스트 타입 추출용
 #test1 =  [node_test.get('type') for node_test in node_test]
