@@ -12,41 +12,23 @@ def process_node(node: Dict[str, Any], nodes: Dict[str, Dict[str, Any]]) -> str:
         new_body = []
 
         if node['type'] == 'IfStatement':
-            # test 부분 처리
-            if 'test' in node and isinstance(node['test'], dict):
-                test_id = process_node(node['test'], nodes)
-                new_node['child_ids'].append(test_id)
-                nodes[test_id]['parent_id'].append(node_id)
-                new_body.append({'type': 'test', 'id': test_id})
-
-            # consequent 부분 처리
-            if 'consequent' in node and isinstance(node['consequent'], dict):
-                consequent_id = process_node(node['consequent'], nodes)
-                new_node['child_ids'].append(consequent_id)
-                nodes[consequent_id]['parent_id'].append(node_id)
-                new_body.append({'type': 'consequent', 'id': consequent_id})
-
-            # alternate 부분 처리
-            if 'alternate' in node and isinstance(node['alternate'], dict):
-                alternate_id = process_node(node['alternate'], nodes)
-                new_node['child_ids'].append(alternate_id)
-                nodes[alternate_id]['parent_id'].append(node_id)
-                new_body.append({'type': 'alternate', 'id': alternate_id})
+            for part in ['test', 'consequent', 'alternate']:
+                if part in node and isinstance(node[part], dict):
+                    child_id = process_node(node[part], nodes)
+                    new_body.append({'type': part, 'id': child_id})
+                    nodes[child_id]['parent_id'].append(node_id)
 
         elif 'body' in node:
-            # 기존의 body 처리 로직
             if isinstance(node['body'], list):
                 for item in node['body']:
                     if isinstance(item, dict) and 'type' in item:
                         child_id = process_node(item, nodes)
-                        new_node['child_ids'].append(child_id)
-                        nodes[child_id]['parent_id'].append(node_id)
                         new_body.append({'type': item['type'], 'id': child_id})
+                        nodes[child_id]['parent_id'].append(node_id)
             elif isinstance(node['body'], dict) and 'type' in node['body']:
                 child_id = process_node(node['body'], nodes)
-                new_node['child_ids'].append(child_id)
-                nodes[child_id]['parent_id'].append(node_id)
                 new_body.append({'type': node['body']['type'], 'id': child_id})
+                nodes[child_id]['parent_id'].append(node_id)
 
         new_node['body'] = new_body
         for key, value in node.items():
