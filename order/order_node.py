@@ -42,5 +42,5 @@ def order_node(nodes:dict):
     "BlockStatement와 IfStatement의 부모관계를 재배열합니다."
     result = update_parent_id(nodes)
     result = order_ifStatement(result)
-    result = order_BlockStatement(result)
+    #result = order_BlockStatement(result)
     return result
