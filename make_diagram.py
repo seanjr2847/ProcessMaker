@@ -119,7 +119,7 @@ decision = drawpyo.diagram.object_from_library(
 )
 {node_id}.center_position = (col_pos + {x} * col_h, row_margin + row_h * {y})
 '''
-        elif node_type == "decision":
+        elif node_type == "IfStatement":
             template = "decision"
         else:
             template = "process"

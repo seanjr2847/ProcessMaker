@@ -1,41 +1,27 @@
-def order_BlockStatement(nodes):
-    block_replacements = {}
-    node_map = {node['id']: node for node in nodes}
+from .BlockStatement import order_BlockStatement
 
-    def collect_block_replacements(node):
-        if node['type'] == 'BlockStatement' and 'body' in node and node['body']:
-            first_child = node['body'][0]
-            if isinstance(first_child, dict):
-                first_child_id = first_child['id']
-            else:
-                first_child_id = first_child
-            block_replacements[node['id']] = first_child_id
+def update_parent_id(dict_list):
+    if len(dict_list) < 2:
+        return dict_list  # 리스트에 딕셔너리가 2개 미만이면 변경 없이 반환
 
-    def deep_replace(item):
-        if isinstance(item, dict):
-            for key, value in item.items():
-                if key == 'id' and value in block_replacements:
-                    item[key] = block_replacements[value]
-                else:
-                    item[key] = deep_replace(value)
-            return item
-        elif isinstance(item, list):
-            return [deep_replace(element) for element in item]
-        else:
-            return block_replacements.get(item, item) if isinstance(item, str) else item
+    # 첫 번째 딕셔너리의 'id' 값 가져오기
+    first_id = dict_list[0].get('id')
 
-    # First pass: collect all block replacements
-    for node in nodes:
-        collect_block_replacements(node)
+    if first_id is not None:
+        # 두 번째 딕셔너리의 'parent_id' 리스트에 첫 번째 딕셔너리의 'id' 값 추가
+        if 'parent_id' not in dict_list[1]:
+            dict_list[1]['parent_id'] = []
+        dict_list[1]['parent_id'].append(first_id)
 
-    # Second pass: apply replacements deeply
-    updated_nodes = []
-    for node in nodes:
-        if node['type'] != 'BlockStatement' or node['id'] not in block_replacements:
-            updated_node = deep_replace(node)
-            updated_nodes.append(updated_node)
+    # 첫 번째 딕셔너리에 'body' 키 추가
+    dict_list[0]['body'] = [{
+        "type": dict_list[1].get('type', ''),
+        "id": dict_list[1].get('id', '')
+    }]
 
-    return updated_nodes
+    return dict_list
+
+
 
 
 def order_ifStatement(nodes):
@@ -54,6 +40,7 @@ def order_ifStatement(nodes):
 
 def order_node(nodes:dict):
     "BlockStatement와 IfStatement의 부모관계를 재배열합니다."
-    result = order_BlockStatement(nodes)
-    #result = order_ifStatement(nodes)
+    result = update_parent_id(nodes)
+    result = order_ifStatement(result)
+    result = order_BlockStatement(result)
     return result

@@ -6,7 +6,7 @@ from common import create_node
 def process_node(node: Dict[str, Any], nodes: Dict[str, Dict[str, Any]]) -> str:
     try:
         new_node = create_node(node['type'], None)
-        node_id = new_node['id']
+        node_id = new_node['id']  # 새로 생성된 UUID
         nodes[node_id] = new_node
 
         new_body = []
@@ -24,21 +24,28 @@ def process_node(node: Dict[str, Any], nodes: Dict[str, Dict[str, Any]]) -> str:
                     if isinstance(item, dict) and 'type' in item:
                         child_id = process_node(item, nodes)
                         new_body.append({'type': item['type'], 'id': child_id})
-                        nodes[child_id]['parent_id'].append(node_id)
+                        
             elif isinstance(node['body'], dict) and 'type' in node['body']:
                 child_id = process_node(node['body'], nodes)
                 new_body.append({'type': node['body']['type'], 'id': child_id})
-                nodes[child_id]['parent_id'].append(node_id)
+                
 
         new_node['body'] = new_body
+        
+        # 원본 노드의 'id'를 'original_id'로 저장
+        if 'id' in node:
+            new_node['original_id'] = node['id']
+        
+        # 다른 속성들을 복사
         for key, value in node.items():
-            if key not in ['type', 'body', 'test', 'consequent', 'alternate']:
+            if key not in ['type', 'body', 'test', 'consequent', 'alternate', 'id']:
                 new_node[key] = value
 
         return node_id
     except Exception as e:
         print(f"오류 발생: {str(e)}")
         return ""
+
 
 
 def split_ast(ast: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
