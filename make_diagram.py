@@ -112,7 +112,7 @@ decision = drawpyo.diagram.object_from_library(
 
     def create_node(node_id: str, node_type: str, content: str, x: int, y: int) -> str:
         """Create a node based on its type and properties."""
-        if node_type == "function":
+        if node_type == "FunctionDeclaration":
             return f'''
 {node_id} = drawpyo.diagram.object_from_library(
     library="flowchart", obj_name="terminator", value={repr(content)}, page=page

@@ -45,6 +45,8 @@ def simplify_nodes(nodes: List[Dict[str, Any]], function_name: str) -> List[Dict
             simplified_nodes.append(node)
         elif node.get('type') == 'Program':
             continue
+        elif node.get('type') == 'CallExpression':
+            simplified_nodes.append(ExpressionStatement(node))
         else:
             print(f"예상치 못한 타입{node['type']} 발생")
             simplified_nodes.append(node)
@@ -54,7 +56,7 @@ def simplify_nodes(nodes: List[Dict[str, Any]], function_name: str) -> List[Dict
 
 def modify_main(nodes: List[Dict[str, Any]],function_name:str) -> List[Dict[str, Any]]:
     """
-    ast 형태를 가다듬습니다.
+    노드의 형태를 동일한 형태로 변경합니다.
     """
     "Variable Declration 변환"
     modified_nodes = simplify_nodes(nodes, function_name)

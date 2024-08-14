@@ -1,4 +1,5 @@
 import py_mini_racer
+import re
 
 def open_esprima():
     """
@@ -15,12 +16,29 @@ def open_esprima():
     """
     return esprima_code, parse_code_js
 
-def nexa_js_convert(nexacro_code:str) -> str:
+def nexa_js_convert(code:str) -> str:
     """
     넥사크로 format에서 js와 다른 분들을 제외합니다.
     """
-    js_code = nexacro_code.replace(":Combo", "").replace(":ItemChangeEventInfo", "")
-    return js_code
+    # 함수 선언부 변환
+    code = re.sub(r'function\s+(\w+)\s*\((.*?)\)', lambda m: f"function {m.group(1)}({', '.join(param.split(':')[0].strip() for param in m.group(2).split(','))})", code)
+    
+    # gf_trim 함수를 임시로 String.prototype.trim()으로 대체
+    code = code.replace('gf_trim(', '(')
+    
+    # 객체 접근 방식 변환 (예: CMCalMonth01.med_cal.value -> CMCalMonth01["med_cal"]["value"])
+    code = re.sub(r'(\w+)\.(\w+)\.(\w+)', r'\1["\2"]["\3"]', code)
+    
+    # ds_input.setColumn을 가상의 함수로 변환
+    code = re.sub(r'ds_input\.setColumn\s*\(\s*(\d+)\s*,\s*"([^"]*)"\s*,\s*([^)]*)\)', r'setColumn(\1, "\2", \3)', code)
+    
+    # getHREmpEduMngSel 함수 호출을 가상의 함수로 변환
+    code = code.replace('getHREmpEduMngSel()', 'getHREmpEduMngSel()')
+    
+    # ds_input.addRow()를 가상의 함수로 변환
+    code = code.replace('ds_input.addRow()', 'addRow()')
+    
+    return code
 
 def nexa_to_js(nexacro_code: str) -> dict:
     """

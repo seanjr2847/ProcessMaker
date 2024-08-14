@@ -39,8 +39,15 @@ def order_ifStatement(nodes):
 
 
 def order_node(nodes:dict):
-    "BlockStatement와 IfStatement의 부모관계를 재배열합니다."
+    """
+    1. 루트노드를 함수선언으로 재설정합니다.
+    2. IF문의 TEST부분을 재배열합니다.
+    3. BLOCKSTATMENT를 삭제하고 하위노드의 관계를 재배열합니다.
+    """
+    # 1
     result = update_parent_id(nodes)
+    # 2
     result = order_ifStatement(result)
-    #result = order_BlockStatement(result)
+    # 3
+    result = order_BlockStatement(result)
     return result
