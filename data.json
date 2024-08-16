@@ -1,0 +1,597 @@
+[
+    {
+        "id": "Node_ee8dbc8a_cba9_4329_8989_849b48fe35d8",
+        "parent_id": [],
+        "type": "FunctionDeclaration",
+        "original_id": {
+            "type": "Identifier",
+            "name": "fn_callBack",
+            "range": [
+                10,
+                21
+            ]
+        },
+        "content": "function fn_callBack(svcid, strErrCode, strErrMsg) {}"
+    },
+    {
+        "id": "Node_f9c6e282_3c4c_460e_8b69_d3bdcc218332",
+        "parent_id": [],
+        "type": "BlockStatement",
+        "body": [
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_3c50db65_e060_427e_a785_2a8ee61cfeed"
+            },
+            {
+                "type": "VariableDeclaration",
+                "id": "Node_0a25654a_e45f_4071_a6e5_d70153d9d1a7"
+            },
+            {
+                "type": "VariableDeclaration",
+                "id": "Node_6302a372_f0d6_4dc8_9265_7cabcc59712c"
+            },
+            {
+                "type": "IfStatement",
+                "id": "Node_0737c156_2154_4bf8_9cc9_2336a0db4827"
+            }
+        ]
+    },
+    {
+        "id": "Node_3c50db65_e060_427e_a785_2a8ee61cfeed",
+        "parent_id": [],
+        "type": "CallExpressionStatement",
+        "body": [],
+        "content": "gf_showWaitImage(false);"
+    },
+    {
+        "id": "Node_0a25654a_e45f_4071_a6e5_d70153d9d1a7",
+        "parent_id": [],
+        "type": "VariableDeclaration",
+        "body": [],
+        "content": "var sErrorcd = \"\";"
+    },
+    {
+        "id": "Node_6302a372_f0d6_4dc8_9265_7cabcc59712c",
+        "parent_id": [],
+        "type": "VariableDeclaration",
+        "body": [],
+        "content": "var sErrormsg = \"\";"
+    },
+    {
+        "id": "Node_0737c156_2154_4bf8_9cc9_2336a0db4827",
+        "parent_id": [],
+        "type": "IfStatement",
+        "body": [
+            {
+                "type": "test",
+                "id": "Node_2153b40e_72a3_4975_84b0_b471dba86f71"
+            },
+            {
+                "type": "consequent",
+                "id": "Node_9286e0d6_22eb_40a2_b370_5a59cc815d7b"
+            },
+            {
+                "type": "alternate",
+                "id": "Node_0b68dea5_6dd8_45ce_8288_e7a13b14f5f1"
+            }
+        ]
+    },
+    {
+        "id": "Node_2153b40e_72a3_4975_84b0_b471dba86f71",
+        "parent_id": [
+            "Node_0737c156_2154_4bf8_9cc9_2336a0db4827"
+        ],
+        "type": "BinaryExpression",
+        "body": [],
+        "content": "strErrCode == -1000"
+    },
+    {
+        "id": "Node_9286e0d6_22eb_40a2_b370_5a59cc815d7b",
+        "parent_id": [
+            "Node_0737c156_2154_4bf8_9cc9_2336a0db4827"
+        ],
+        "type": "BlockStatement",
+        "body": [
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_f56acf37_2fc8_4fb9_8a7d_c73c6551044e"
+            },
+            {
+                "type": "ReturnStatement",
+                "id": "Node_d8802898_2db8_4ef4_891a_634956a3d32a"
+            }
+        ]
+    },
+    {
+        "id": "Node_f56acf37_2fc8_4fb9_8a7d_c73c6551044e",
+        "parent_id": [],
+        "type": "CallExpressionStatement",
+        "body": [],
+        "content": "gf_sessionOut();"
+    },
+    {
+        "id": "Node_d8802898_2db8_4ef4_891a_634956a3d32a",
+        "parent_id": [],
+        "type": "ReturnStatement",
+        "body": [],
+        "content": "return"
+    },
+    {
+        "id": "Node_0b68dea5_6dd8_45ce_8288_e7a13b14f5f1",
+        "parent_id": [
+            "Node_0737c156_2154_4bf8_9cc9_2336a0db4827"
+        ],
+        "type": "IfStatement",
+        "body": [
+            {
+                "type": "test",
+                "id": "Node_299f8bcc_d2da_4d25_b532_fd1870cd9d10"
+            },
+            {
+                "type": "consequent",
+                "id": "Node_0e2803e8_fcbe_4d6e_9a80_753afa136310"
+            },
+            {
+                "type": "alternate",
+                "id": "Node_6792f7c4_b139_4cfe_8c74_448e2fd57337"
+            }
+        ]
+    },
+    {
+        "id": "Node_299f8bcc_d2da_4d25_b532_fd1870cd9d10",
+        "parent_id": [
+            "Node_0b68dea5_6dd8_45ce_8288_e7a13b14f5f1"
+        ],
+        "type": "BinaryExpression",
+        "body": [],
+        "content": "strErrCode != 0"
+    },
+    {
+        "id": "Node_0e2803e8_fcbe_4d6e_9a80_753afa136310",
+        "parent_id": [
+            "Node_0b68dea5_6dd8_45ce_8288_e7a13b14f5f1"
+        ],
+        "type": "BlockStatement",
+        "body": [
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_9adbe4ec_64bd_46bd_9647_d3834a21e2c1"
+            },
+            {
+                "type": "ReturnStatement",
+                "id": "Node_9f0d80c1_2100_420e_b0ca_79bcb8b6becc"
+            }
+        ]
+    },
+    {
+        "id": "Node_9adbe4ec_64bd_46bd_9647_d3834a21e2c1",
+        "parent_id": [],
+        "type": "CallExpressionStatement",
+        "body": [],
+        "content": "gf_alertMessage(\"CME0002\", [strErrMsg]);"
+    },
+    {
+        "id": "Node_9f0d80c1_2100_420e_b0ca_79bcb8b6becc",
+        "parent_id": [],
+        "type": "ReturnStatement",
+        "body": [],
+        "content": "return"
+    },
+    {
+        "id": "Node_6792f7c4_b139_4cfe_8c74_448e2fd57337",
+        "parent_id": [
+            "Node_0b68dea5_6dd8_45ce_8288_e7a13b14f5f1"
+        ],
+        "type": "BlockStatement",
+        "body": [
+            {
+                "type": "IfStatement",
+                "id": "Node_e9ec9406_0ad8_4572_b3f9_af4df91517ac"
+            }
+        ]
+    },
+    {
+        "id": "Node_e9ec9406_0ad8_4572_b3f9_af4df91517ac",
+        "parent_id": [],
+        "type": "IfStatement",
+        "body": [
+            {
+                "type": "test",
+                "id": "Node_bf24ce00_5b35_48b8_9436_47bd504ab9a8"
+            },
+            {
+                "type": "consequent",
+                "id": "Node_47d7846d_63de_4c5e_ab13_9da236cc9667"
+            },
+            {
+                "type": "alternate",
+                "id": "Node_447c1387_fbd4_4d88_80cb_07dced171e11"
+            }
+        ]
+    },
+    {
+        "id": "Node_bf24ce00_5b35_48b8_9436_47bd504ab9a8",
+        "parent_id": [
+            "Node_e9ec9406_0ad8_4572_b3f9_af4df91517ac"
+        ],
+        "type": "BinaryExpression",
+        "body": [],
+        "content": "svcid == 'HREduTargSel_sel'"
+    },
+    {
+        "id": "Node_47d7846d_63de_4c5e_ab13_9da236cc9667",
+        "parent_id": [
+            "Node_e9ec9406_0ad8_4572_b3f9_af4df91517ac"
+        ],
+        "type": "BlockStatement",
+        "body": [
+            {
+                "type": "IfStatement",
+                "id": "Node_f04bca80_46d2_4e39_b060_572365117c0d"
+            },
+            {
+                "type": "ReturnStatement",
+                "id": "Node_dad49f2e_e993_4ca2_80d4_8b4a002de823"
+            }
+        ]
+    },
+    {
+        "id": "Node_f04bca80_46d2_4e39_b060_572365117c0d",
+        "parent_id": [],
+        "type": "IfStatement",
+        "body": [
+            {
+                "type": "test",
+                "id": "Node_521e9ccc_c9e6_4c4b_bdbc_899aad02bb63"
+            },
+            {
+                "type": "consequent",
+                "id": "Node_9a583b61_bb33_46d3_9fd8_fa07c87df92d"
+            },
+            {
+                "type": "alternate",
+                "id": "Node_6cd737cd_1dfa_45fc_8b1f_1c08d49da42a"
+            }
+        ]
+    },
+    {
+        "id": "Node_521e9ccc_c9e6_4c4b_bdbc_899aad02bb63",
+        "parent_id": [
+            "Node_f04bca80_46d2_4e39_b060_572365117c0d"
+        ],
+        "type": "BinaryExpression",
+        "body": [],
+        "content": "ds_eduInfo.rowcount < 1"
+    },
+    {
+        "id": "Node_9a583b61_bb33_46d3_9fd8_fa07c87df92d",
+        "parent_id": [
+            "Node_f04bca80_46d2_4e39_b060_572365117c0d"
+        ],
+        "type": "BlockStatement",
+        "body": [
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_ac6833be_f097_4ad3_8565_cf88e3f032f2"
+            },
+            {
+                "type": "ReturnStatement",
+                "id": "Node_06112320_5679_4ced_8d4e_28b2260ad808"
+            }
+        ]
+    },
+    {
+        "id": "Node_ac6833be_f097_4ad3_8565_cf88e3f032f2",
+        "parent_id": [],
+        "type": "CallExpressionStatement",
+        "body": [],
+        "content": "gf_messageCtl(\"CMI0007\");"
+    },
+    {
+        "id": "Node_06112320_5679_4ced_8d4e_28b2260ad808",
+        "parent_id": [],
+        "type": "ReturnStatement",
+        "body": [],
+        "content": "return"
+    },
+    {
+        "id": "Node_6cd737cd_1dfa_45fc_8b1f_1c08d49da42a",
+        "parent_id": [
+            "Node_f04bca80_46d2_4e39_b060_572365117c0d"
+        ],
+        "type": "BlockStatement",
+        "body": [
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_61cc1f36_62c4_47cd_b312_c15d59280ce5"
+            }
+        ]
+    },
+    {
+        "id": "Node_61cc1f36_62c4_47cd_b312_c15d59280ce5",
+        "parent_id": [],
+        "type": "CallExpressionStatement",
+        "body": [],
+        "content": "gf_messageCtl(\"CMI0009\");"
+    },
+    {
+        "id": "Node_dad49f2e_e993_4ca2_80d4_8b4a002de823",
+        "parent_id": [],
+        "type": "ReturnStatement",
+        "body": [],
+        "content": "return"
+    },
+    {
+        "id": "Node_447c1387_fbd4_4d88_80cb_07dced171e11",
+        "parent_id": [
+            "Node_e9ec9406_0ad8_4572_b3f9_af4df91517ac"
+        ],
+        "type": "IfStatement",
+        "body": [
+            {
+                "type": "test",
+                "id": "Node_b6b1bc51_b903_4ced_89f6_e0a42fa353c6"
+            },
+            {
+                "type": "consequent",
+                "id": "Node_d470b3ca_3abf_4187_b2f6_1cbeb19fca17"
+            },
+            {
+                "type": "alternate",
+                "id": "Node_708428a7_975e_498b_bd15_21a92c9e0700"
+            }
+        ]
+    },
+    {
+        "id": "Node_b6b1bc51_b903_4ced_89f6_e0a42fa353c6",
+        "parent_id": [
+            "Node_447c1387_fbd4_4d88_80cb_07dced171e11"
+        ],
+        "type": "BinaryExpression",
+        "body": [],
+        "content": "svcid == 'COMBO'"
+    },
+    {
+        "id": "Node_d470b3ca_3abf_4187_b2f6_1cbeb19fca17",
+        "parent_id": [
+            "Node_447c1387_fbd4_4d88_80cb_07dced171e11"
+        ],
+        "type": "BlockStatement",
+        "body": [
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_6046ede2_9b6c_4631_b57d_7dd903973fa6"
+            },
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_0536fd7b_0b66_457a_9be5_5adf8eb5d987"
+            },
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_ac4a8014_aa0d_42e0_8cf4_d79e35a10bcf"
+            },
+            {
+                "type": "ReturnStatement",
+                "id": "Node_2c6c1391_50b0_4415_bff3_a3af371fec76"
+            }
+        ]
+    },
+    {
+        "id": "Node_6046ede2_9b6c_4631_b57d_7dd903973fa6",
+        "parent_id": [],
+        "type": "CallExpressionStatement",
+        "body": [],
+        "content": "gf_insertDefaultRowForCombo(ds_eduCat, \"전체\", \"\", 0, \"CD_NM\", \"DTL_CD\");"
+    },
+    {
+        "id": "Node_0536fd7b_0b66_457a_9be5_5adf8eb5d987",
+        "parent_id": [],
+        "type": "AssignmentExpressionStatement",
+        "body": [],
+        "content": "cmb_eduCat.index = 0;"
+    },
+    {
+        "id": "Node_ac4a8014_aa0d_42e0_8cf4_d79e35a10bcf",
+        "parent_id": [],
+        "type": "CallExpressionStatement",
+        "body": [],
+        "content": "fn_getStdOrgInfo();"
+    },
+    {
+        "id": "Node_2c6c1391_50b0_4415_bff3_a3af371fec76",
+        "parent_id": [],
+        "type": "ReturnStatement",
+        "body": [],
+        "content": "return"
+    },
+    {
+        "id": "Node_708428a7_975e_498b_bd15_21a92c9e0700",
+        "parent_id": [
+            "Node_447c1387_fbd4_4d88_80cb_07dced171e11"
+        ],
+        "type": "IfStatement",
+        "body": [
+            {
+                "type": "test",
+                "id": "Node_6083396c_de4a_4c65_a3ca_53569773d85c"
+            },
+            {
+                "type": "consequent",
+                "id": "Node_f349b287_fa90_4f5f_9587_507c120b4571"
+            },
+            {
+                "type": "alternate",
+                "id": "Node_26995dcf_873a_4e1c_88c8_7ed39a79bb82"
+            }
+        ]
+    },
+    {
+        "id": "Node_6083396c_de4a_4c65_a3ca_53569773d85c",
+        "parent_id": [
+            "Node_708428a7_975e_498b_bd15_21a92c9e0700"
+        ],
+        "type": "BinaryExpression",
+        "body": [],
+        "content": "svcid == 'ALStdOrgInfo_sel'"
+    },
+    {
+        "id": "Node_f349b287_fa90_4f5f_9587_507c120b4571",
+        "parent_id": [
+            "Node_708428a7_975e_498b_bd15_21a92c9e0700"
+        ],
+        "type": "BlockStatement",
+        "body": [
+            {
+                "type": "IfStatement",
+                "id": "Node_27d1d26e_770f_4395_94d9_6f1047d1c65e"
+            },
+            {
+                "type": "ReturnStatement",
+                "id": "Node_4b3eb81e_8b20_48e2_8474_1271dec1cdbb"
+            }
+        ]
+    },
+    {
+        "id": "Node_27d1d26e_770f_4395_94d9_6f1047d1c65e",
+        "parent_id": [],
+        "type": "IfStatement",
+        "body": [
+            {
+                "type": "test",
+                "id": "Node_c99be1d6_6ba2_487c_82b9_923379534e9a"
+            },
+            {
+                "type": "consequent",
+                "id": "Node_f7b9948d_a2ed_41c2_bb5c_5d2e27909f3d"
+            },
+            {
+                "type": "alternate",
+                "id": "Node_5757d919_d3dc_492e_803b_dd681680126f"
+            }
+        ]
+    },
+    {
+        "id": "Node_c99be1d6_6ba2_487c_82b9_923379534e9a",
+        "parent_id": [
+            "Node_27d1d26e_770f_4395_94d9_6f1047d1c65e"
+        ],
+        "type": "BinaryExpression",
+        "body": [],
+        "content": "{'type': 'CallExpression', 'callee': {'type': 'MemberExpression', 'computed': False, 'object': {'type': 'Identifier', 'name': 'gds_userInfos', 'range': [793, 806]}, 'property': {'type': 'Identifier', 'name': 'getColumn', 'range': [807, 816]}, 'range': [793, 816]}, 'arguments': [{'type': 'Literal', 'value': 0, 'raw': '0', 'range': [817, 818]}, {'type': 'Literal', 'value': 'AUTH_LVL_CD', 'raw': '\"AUTH_LVL_CD\"', 'range': [820, 833]}], 'range': [793, 834]} == '10'"
+    },
+    {
+        "id": "Node_f7b9948d_a2ed_41c2_bb5c_5d2e27909f3d",
+        "parent_id": [
+            "Node_27d1d26e_770f_4395_94d9_6f1047d1c65e"
+        ],
+        "type": "BlockStatement",
+        "body": [
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_fab79c65_cf42_4cda_80ba_a753a8e4dd4c"
+            },
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_c4586e03_8386_443b_971f_012c291ab192"
+            }
+        ]
+    },
+    {
+        "id": "Node_fab79c65_cf42_4cda_80ba_a753a8e4dd4c",
+        "parent_id": [],
+        "type": "AssignmentExpressionStatement",
+        "body": [],
+        "content": "cmb_stdOrg.value = gf_getStdOrgCd();"
+    },
+    {
+        "id": "Node_c4586e03_8386_443b_971f_012c291ab192",
+        "parent_id": [],
+        "type": "AssignmentExpressionStatement",
+        "body": [],
+        "content": "cmb_stdOrg.enable = true;"
+    },
+    {
+        "id": "Node_5757d919_d3dc_492e_803b_dd681680126f",
+        "parent_id": [
+            "Node_27d1d26e_770f_4395_94d9_6f1047d1c65e"
+        ],
+        "type": "BlockStatement",
+        "body": [
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_8226ae91_6e5a_4226_8cac_59ecf41e0421"
+            },
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_2cb8128f_6ad8_4877_bf19_82b00c8c6876"
+            }
+        ]
+    },
+    {
+        "id": "Node_8226ae91_6e5a_4226_8cac_59ecf41e0421",
+        "parent_id": [],
+        "type": "AssignmentExpressionStatement",
+        "body": [],
+        "content": "cmb_stdOrg.value = gds_userInfos.getColumn(0, \"GRP_CD\");"
+    },
+    {
+        "id": "Node_2cb8128f_6ad8_4877_bf19_82b00c8c6876",
+        "parent_id": [],
+        "type": "AssignmentExpressionStatement",
+        "body": [],
+        "content": "cmb_stdOrg.enable = false;"
+    },
+    {
+        "id": "Node_4b3eb81e_8b20_48e2_8474_1271dec1cdbb",
+        "parent_id": [],
+        "type": "ReturnStatement",
+        "body": [],
+        "content": "return"
+    },
+    {
+        "id": "Node_26995dcf_873a_4e1c_88c8_7ed39a79bb82",
+        "parent_id": [
+            "Node_708428a7_975e_498b_bd15_21a92c9e0700"
+        ],
+        "type": "IfStatement",
+        "body": [
+            {
+                "type": "test",
+                "id": "Node_57df5f87_e809_4dc3_b9c3_0d2e005d5548"
+            },
+            {
+                "type": "consequent",
+                "id": "Node_5a5f055f_f393_4ad0_8952_b9baec666546"
+            }
+        ]
+    },
+    {
+        "id": "Node_57df5f87_e809_4dc3_b9c3_0d2e005d5548",
+        "parent_id": [
+            "Node_26995dcf_873a_4e1c_88c8_7ed39a79bb82"
+        ],
+        "type": "BinaryExpression",
+        "body": [],
+        "content": "svcid == 'HRRctAppInfoReApprUpt'"
+    },
+    {
+        "id": "Node_5a5f055f_f393_4ad0_8952_b9baec666546",
+        "parent_id": [
+            "Node_26995dcf_873a_4e1c_88c8_7ed39a79bb82"
+        ],
+        "type": "BlockStatement",
+        "body": [
+            {
+                "type": "ExpressionStatement",
+                "id": "Node_d9485655_d997_43b1_9e57_0b01fd3660bb"
+            }
+        ]
+    },
+    {
+        "id": "Node_d9485655_d997_43b1_9e57_0b01fd3660bb",
+        "parent_id": [],
+        "type": "CallExpressionStatement",
+        "body": [],
+        "content": "gf_alertMessage(\"CMI0001\");"
+    }
+]

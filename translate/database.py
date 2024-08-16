@@ -1,6 +1,6 @@
 import sqlite3
 
-def query_database(table_name, column_name, condition_column, condition_value):
+def database(table_name, column_name, condition_column, condition_value):
     """
     특정 테이블에서 조건에 맞는 단일 값을 조회하여 반환합니다.
     :param table_name: 조회할 테이블 이름
@@ -36,7 +36,7 @@ def query_database(table_name, column_name, condition_column, condition_value):
         return None
 
 
-def gen_query(type:str, query_params:str):
+def query(type:str, query_params:str):
     """
     조회할 데이터 타입과 원하는 파라미터를 입력할 시, 조회결과를 반환해줍니다.
     """
@@ -51,9 +51,9 @@ def gen_query(type:str, query_params:str):
         condition_column = 'key'
         condition_value = query_params
     
-    result = query_database(table_name, column_name, condition_column, condition_value)
+    result = database(table_name, column_name, condition_column, condition_value)
     
     return result
 
 
-print(gen_query('commsg','CME0002'))
+print(query('commsg','CME0002'))

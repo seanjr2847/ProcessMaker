@@ -4,6 +4,8 @@ from modify.modify_type import modify_main
 from make_diagram import assign_coordinates, make_diagram
 from order.order_node import order_node
 from test import validate_parent_relationships
+import json
+from translate.translate_node import translate_main
 
 def main():
 	# 넥사크로 코드 (예시 input)
@@ -74,9 +76,16 @@ function fn_callBack(svcid,strErrCode,strErrMsg)
 	#ast를 노드의 형태로 반환합니다.
 	nodes = node_main(ast)
 	print(nodes)
+	# 데이터를 JSON 파일로 저장
+
+	
 	#노드 간략화 시킴
 	modified_nodes = modify_main(nodes, function_name)
+	with open('data.json', 'w', encoding='utf-8') as json_file:
+		json.dump(modified_nodes, json_file, ensure_ascii=False, indent=4)
 
+	#함수 번역
+	translate_nodes = translate_main(modified_nodes, function_name)
 
 	#노드 정렬함
 	ordered_nodes = order_node(modified_nodes)
